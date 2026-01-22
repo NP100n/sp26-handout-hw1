@@ -1,9 +1,11 @@
-"""
-Main module to run the Housing Priority Calculator application.
-"""
+
+#Main module to run the Housing Priority Calculator application.
+
 
 import sys
 sys.path.append(".")
+
+
 
 from src.question_asker import (
     ask_additional_questions,
@@ -25,6 +27,18 @@ def main() -> None:
     # TODO: Calculate and print the final housing priority score
     # TODO: Add documentation to this function
     pass
+
+
+
+grad = ask_graduation_status()
+cred = ask_credits_earned()
+year = ask_class_year()
+add_q = ask_additional_questions()
+
+print(calculate_total_score(year, grad, cred, add_q))
+
+
+
 
 if __name__ == "__main__":
     main()

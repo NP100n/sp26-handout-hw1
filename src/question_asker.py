@@ -19,6 +19,15 @@ def ask_class_year() -> int:
     4. Handle invalid input by asking again
     5. Return the valid integer
     """
+    inp = input("what is your class year (1-4): ")
+    if inp.isdigit() == False:
+        print("must be integer")
+        print(ask_class_year())
+    if int(inp) < 1 or int(inp) > 4:
+        print("class year must not be less than 1 or greater than 4")
+        print(ask_class_year())
+    else:
+        return int(inp)
 
 
 def ask_graduation_status() -> bool:
@@ -40,6 +49,14 @@ def ask_graduation_status() -> bool:
     4. Handle invalid input by asking again
     5. Return True for y/Y, False for n/N
     """
+    inp = input("Are you graduating this semester? (y/n): ")
+    if inp != "y" and inp != "n" and inp != "Y" and inp != "N":
+        print("must type y or Y for yes, or n or N for no")
+        print(ask_graduation_status())
+    return bool(inp == "y" or inp == "Y")
+
+    
+
 
 
 def ask_credits_earned() -> int:
@@ -58,7 +75,11 @@ def ask_credits_earned() -> int:
     4. Handle invalid input by asking again
     5. Return the valid integer
     """
-
+    inp = input("How many credits have you earned?: ")
+    if int(inp) < 0 or inp.isdigit() == False:
+        print("credits must be a number greater than 0")
+        print(ask_credits_earned())
+    return int(inp)
 
 def ask_additional_questions() -> dict[str, bool]:
     """Ask at least two yes/no questions and return a dict of responses.
@@ -91,3 +112,20 @@ def ask_additional_questions() -> dict[str, bool]:
         'your_second_key': boolean_result_2 
         }
     """
+    q1 = input("do you have any academic violations (y/n): ")
+    if q1 != "y" and q1 != "n" and q1 != "Y" and q1 != "N":
+        print("must type y or Y for yes, or n or N for no (y/n)")
+        print(ask_additional_questions)
+    q2 = input("are you attending the honors program (y/n): ")
+    if q2 != "y" and q2 != "n" and q2 != "Y" and q2 != "N":
+        print("must type y or Y for yes, or n or N for no (y/n)")
+        print(ask_additional_questions())
+    
+    return {
+        "any_academic_violations": bool(q1 == "y" or q1 == "Y"),
+        "attending_honors_program": bool(q2 == "y" or q2 == "Y")
+    }
+    return 
+
+
+

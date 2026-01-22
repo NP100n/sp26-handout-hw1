@@ -19,6 +19,8 @@ def points_for_class_year(year: int) -> int:
     Implement logic to calculate points based on class year
     """
 
+    return (16 * year)
+
 
 def points_for_graduation(is_graduating: bool) -> int:
     """ 
@@ -29,6 +31,11 @@ def points_for_graduation(is_graduating: bool) -> int:
     
     Implement logic for calculating points for a graduating student
     """
+
+    if is_graduating == True:
+        return 5
+    else:
+        return 0
 
 def points_for_credits(num_credits: int) -> int:
     """
@@ -45,6 +52,7 @@ def points_for_credits(num_credits: int) -> int:
     
     Implement points system for credits.
     """
+    return num_credits
 
 def points_for_additional_questions(responses: dict[str, bool]) -> int:
     """
@@ -59,6 +67,15 @@ def points_for_additional_questions(responses: dict[str, bool]) -> int:
     
     Implement scoring logic.
     """
+    points = 0
+    # {age: num, gpa: num, honors: num}
+
+    if responses["any_academic_violations"] == True:
+        points -=15
+    if responses["attending_honors_program"] == True:
+        points += 15
+
+    return points
 
 
 def calculate_total_score(
@@ -91,3 +108,7 @@ def calculate_total_score(
         
     Use the other methods you implemented to calculate total score
     """
+    total = points_for_class_year(year) + points_for_graduation(is_graduating) + points_for_credits(num_credits) + points_for_additional_questions(additional_responses)
+    return total
+
+
